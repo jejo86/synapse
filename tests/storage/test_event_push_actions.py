@@ -147,6 +147,10 @@ class EventPushActionsStoreTestCase(HomeserverTestCase):
         _inject_actions(10, PlAIN_NOTIF)
         _rotate(11)
         _assert_counts(2, 1)
+        _mark_read(8, 8)
+        _assert_counts(1, 0)
+        _mark_read(10, 10)
+        _assert_counts(0, 0)
 
     def test_find_first_stream_ordering_after_ts(self):
         def add_event(so, ts):
